@@ -1,5 +1,5 @@
 <?php
-/* Plugin Name: AWS Workbench
+/* Plugin Name: Lex Chatbot
  * Author: Jeff Everhart
  *
  *
@@ -12,7 +12,6 @@ define('AWS_WORKBENCH_DIR', dirname(__FILE__) );
 
 require_once dirname(__FILE__) . '/classes/AWSWorkbench_Main.php';
 require_once dirname(__FILE__) . '/classes/AWS_Workbench_Base_Controller.php';
-require_once dirname(__FILE__) . '/classes/AWS_Route53_Controller.php';
 require_once dirname(__FILE__) . '/classes/AWS_S3_Buckets_Controller.php';
 require_once dirname(__FILE__) . '/classes/AWS_SES_Email_Controller.php';
 require_once dirname(__FILE__) . '/classes/AWS_SES_Identities_Controller.php';
@@ -27,10 +26,6 @@ $AWSWorkbench_Main->init();
 // Bootstrap routes and handlers for S3 services
 $AWS_S3 = new AWS_S3_Buckets_Controller($AWSWorkbench_Main->AWS_S3);
 $AWS_S3->init();
-
-$AWS_ROUTE53 = new AWS_Route53_Controller($AWSWorkbench_Main->AWS_ROUTE53, 'route53/hostedzones');
-$AWS_ROUTE53->init();
-
 
 // Bootstrap routes and handlers for Lex Services
 // $AWS_S3 = new AwsWorkbenchS3APIRoutes($AWSWorkbench->AWS_S3);

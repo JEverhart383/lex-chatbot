@@ -15,7 +15,7 @@ class AWSWorkbench_Interface {
 
   public function init () {
 
-    $main_menu = new AWSWorkbench_Interface_MainMenu('AWS Workbench', 'aws-workbench', 'top-level');
+    $main_menu = new AWSWorkbench_Interface_MainMenu('AWS Workbench', 'aws-workbench', 'top-level', '');
     $main_menu->init();
 
     $lex_menu = new AWSWorkbench_Interface_Base('Lex - Chatbot', 'aws-workbench', 'sub-menu', '#/lex');

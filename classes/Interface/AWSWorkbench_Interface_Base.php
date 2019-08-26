@@ -26,7 +26,7 @@ class AWSWorkbench_Interface_Base {
         __( $this->MENU_PAGE_NAME, 'textdomain' ),
         $this->MENU_PAGE_NAME,
         'manage_options',
-        $this->MENU_PAGE_SLUG,
+        $this->MENU_PAGE_SLUG . $this->HASH,
         array($this, 'render_admin_menu_page'),
         'dashicons-grid-view',
         6
