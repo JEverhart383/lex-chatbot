@@ -15,7 +15,11 @@ require_once dirname(__FILE__) . '/classes/AWS_Workbench_Base_Controller.php';
 require_once dirname(__FILE__) . '/classes/AWS_S3_Buckets_Controller.php';
 require_once dirname(__FILE__) . '/classes/AWS_SES_Email_Controller.php';
 require_once dirname(__FILE__) . '/classes/AWS_SES_Identities_Controller.php';
+require_once dirname(__FILE__) . '/classes/AWS_Lex_Model_Bot_Controller.php';
+require_once dirname(__FILE__) . '/classes/AWS_Lex_Model_Intent_Controller.php';
 
+require_once dirname(__FILE__) . '/classes/AwsClientClasses/Lex/Lex_Model_Bots.php';
+require_once dirname(__FILE__) . '/classes/AwsClientClasses/Lex/Lex_Model_Intents.php';
 require_once dirname(__FILE__) . '/classes/AwsClientClasses/SES/SES_Email.php';
 require_once dirname(__FILE__) . '/classes/AwsClientClasses/SES/SES_Identities.php';
 
@@ -38,6 +42,14 @@ $AWS_SES_EMAIL->init();
 $SES_IDENTITIES = new SES_Identities($AWSWorkbench_Main->AWS_SES);
 $AWS_SES_IDENTITIES = new AWS_SES_Identities_Controller($SES_IDENTITIES);
 $AWS_SES_IDENTITIES->init();
+
+$LEX_MODEL_BOTS = new Lex_Model_Bots($AWSWorkbench_Main->AWS_LEX_MODEL);
+$AWS_LEX_MODEL_BOTS = new AWS_Lex_Model_Bot_Controller($LEX_MODEL_BOTS);
+$AWS_LEX_MODEL_BOTS->init();
+
+$LEX_MODEL_INTENTS = new Lex_Model_Intents($AWSWorkbench_Main->AWS_LEX_MODEL);
+$AWS_LEX_MODEL_INTENTS = new AWS_Lex_Model_Intent_Controller($LEX_MODEL_INTENTS);
+$AWS_LEX_MODEL_INTENTS->init();
 
 if (! function_exists('wp_mail')){
   function wp_mail( $to, $subject, $message, $headers = '', $attachments = array() ) {
