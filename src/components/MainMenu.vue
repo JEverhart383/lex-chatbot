@@ -103,8 +103,20 @@
 
 <script lang="ts">
 import Vue from "vue"
+import { DataService } from '../utilities/data-service'
 export default Vue.extend({
-  name: 'MainMenu'
+  name: 'MainMenu',
+  methods: {
+     getBots: async function () {
+      const result = await DataService.getResource({resource: 'bots'})
+      return result
+    }
+  },
+  created: async function () {
+    console.log('this is created');
+    const bots = await this.getBots()
+    console.log(bots)
+  }
 })
 </script>
 
