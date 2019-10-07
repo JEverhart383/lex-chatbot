@@ -1,17 +1,33 @@
 <template>
   <div id="aws-workbench-app">
     <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-      <nav class="navbar navbar-dark bg-dark">
-        <router-link class="navbar-brand" to="/">
-          <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-          AWS Workbench
-        </router-link>
-      </nav>
+    <div class="row mt-5">
+      <div class="col-sm-12 col-md-3">
+        <nav class="nav flex-column">
+          <router-link class="navbar-brand" to="/">
+            Main Menu
+          </router-link>
+          <router-link class="navbar-brand" to="/bots">
+            Bots
+          </router-link>
+          <router-link class="navbar-brand" to="/intents">
+            Intents
+          </router-link>
+          <router-link class="navbar-brand" to="/slot-types">
+            Slot Types
+          </router-link>
+          <router-link class="navbar-brand" to="/slot-types">
+            Email Settings
+          </router-link>
+          <router-link class="navbar-brand" to="/slot-types">
+            Bot Styles
+          </router-link>
+        </nav>
+      </div>
+      <div class="col-sm-12 col-md-9">
+        <router-view/>
       </div>
     </div>
-    <router-view/>
     <!-- End container -->
     </div>
     <!-- End App container -->

@@ -29,7 +29,7 @@ export class DataService {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'X-WP-Nonce': window.AWS_WORKBENCH.rest_nonce
+          'X-WP-Nonce': wordpressNonce.rest_nonce
         }
       }).then(data => data.json())
       return result
