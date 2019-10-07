@@ -23,7 +23,7 @@ export default Vue.extend({
   name: 'BotDetailsPage',
   methods: {
     getBot: async function () {
-      const result = await DataService.getResource({resource: 'bots', name: 'OnlineVCU'})
+      const result = await DataService.getResource({resource: 'bots', name: this.$route.params.name})
       return result
     }
   },

@@ -2,24 +2,14 @@
   <div class="main-menu-wrapper">
     <div class="row">
       <div class="col-sm-12">
-        <h3>Intents</h3>
-        <router-link :to="{name:'AddIntentPage'}" class="btn btn-primary">Add New Intent</router-link>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Version</th>
-              <th>Last Updated</th>
-              <th>Details</th>
-            </tr>
-            <tr v-for="intent in intents" :key="intent.name">
-              <td>{{intent.name}}</td>
-              <td>{{intent.version}}</td>
-              <td>{{intent.lastUpdatedDate}}</td>
-              <td>{{intent.lastUpdatedDate}}</td>
-            </tr>
-          </thead>
-        </table>
+        <h3>Intent Details</h3>
+
+        <h4>{{intent.name}}</h4>
+        <utterances :utterances="intent.sampleUtterances"></utterances>
+        <statement title="Confirmation Prompt" :statement="intent.confirmationPrompt"></statement>
+        <statement title="Rejection Statement" :statement="intent.rejectionStatement"></statement>
+        <statement title="Conclusion Statement" :statement="intent.conclusionStatement"></statement>
+        {{intent}}
       </div>
   </div>
   </div>
@@ -28,22 +18,28 @@
 <script lang="ts">
 import Vue from "vue"
 import { DataService } from '../utilities/data-service'
+import Statement from '../components/Statement.vue'
+import Utterances from '../components/Utterances.vue'
 export default Vue.extend({
   data () {
     return {
-      intents: []
+      intent: {}
     }
+  },
+  components: {
+    Statement,
+    Utterances
   },
   name: 'IntentsPage',
   methods: {
      getIntents: async function () {
-      const result = await DataService.getResource({resource: 'intents'})
+      const result = await DataService.getResource({resource: 'intents', name: this.$route.params.name})
       return result
     }
   },
   created: async function () {
-    const intents = await this.getIntents()
-    this.intents = intents
+    const intent = await this.getIntents()
+    this.intent = intent
   }
 })
 </script>
