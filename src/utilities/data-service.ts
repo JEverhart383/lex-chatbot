@@ -1,3 +1,5 @@
+import { Intent } from "../types/Intent";
+
 export interface GetRequest {
   resource: string;
   name?: string;
@@ -31,6 +33,25 @@ export class DataService {
           'Content-Type': 'application/json',
           'X-WP-Nonce': wordpressNonce.rest_nonce
         }
+      }).then(data => data.json())
+      return result
+
+    } catch (error) {
+      return error.message
+    }
+  }
+
+  public static async putIntent (intent: Partial<Intent>) {
+    try {
+      const fullPath = `/wp-json/aws-workbench/v1/lex/intents`
+      const wordpressNonce:WordPressNonce = window.AWS_WORKBENCH;
+      const result = await fetch( fullPath, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-WP-Nonce': wordpressNonce.rest_nonce
+        },
+        body: JSON.stringify(intent)
       }).then(data => data.json())
       return result
 

@@ -2,9 +2,17 @@
   <div class="main-menu-wrapper">
     <div class="row">
       <div class="col-sm-12">
+        <router-link :to="{name:'EditIntentPage', params: {name: $route.params.name}}" class="btn btn-primary float-right">Edit Intent</router-link>
         <h3>Intent Details</h3>
-
-        <h4>{{intent.name}}</h4>
+        <div class="card">
+          <div class="card-body">
+            <h4>{{intent.name}}</h4>
+            <p>Version: {{intent.version}}</p>
+            <p>Last Updated: {{intent.lastUpdatedDate}}</p>
+            <p>Created: {{intent.createdDate}}</p>
+            <p v-if="intent.fulfillmentActivity">Fullfillment Activity: {{intent.fulfillmentActivity.type}}</p>
+          </div>
+        </div>
         <utterances :utterances="intent.sampleUtterances"></utterances>
         <statement title="Confirmation Prompt" :statement="intent.confirmationPrompt"></statement>
         <statement title="Rejection Statement" :statement="intent.rejectionStatement"></statement>
@@ -32,13 +40,13 @@ export default Vue.extend({
   },
   name: 'IntentsPage',
   methods: {
-     getIntents: async function () {
+     getIntent: async function () {
       const result = await DataService.getResource({resource: 'intents', name: this.$route.params.name})
       return result
     }
   },
   created: async function () {
-    const intent = await this.getIntents()
+    const intent = await this.getIntent()
     this.intent = intent
   }
 })

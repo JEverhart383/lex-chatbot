@@ -30,6 +30,12 @@ class AWS_Lex_Model_Intent_Controller {
       'callback' => array($this, 'get_item')
     ));
 
+    register_rest_route($this->namespace, '/' . $this->resource, array(
+      'methods' => 'PUT',
+      // 'permission_callback' => array($this, 'check_is_admin'),
+      'callback' => array($this, 'put_item')
+    ));
+
   }
 
   public function get_items (WP_REST_Request $request) {
@@ -45,6 +51,16 @@ class AWS_Lex_Model_Intent_Controller {
     try {
       $name = $request['name'];
       $intent = $this->LEX_MODEL->getIntent($name);
+      return $intent;
+    } catch (Exception $exc) {
+      return $exc;
+    }
+  }
+
+  public function put_item (WP_REST_Request $request) {
+    try {
+      $intentToPut = $request->get_body();
+      $intent = $this->LEX_MODEL->putIntent($intentToPut);
       return $intent;
     } catch (Exception $exc) {
       return $exc;

@@ -2,8 +2,8 @@
   <div class="main-menu-wrapper">
     <div class="row">
       <div class="col-sm-12">
+        <router-link :to="{name:'AddIntentPage'}" class="btn btn-primary float-right">Add New Intent</router-link>
         <h3>Intents</h3>
-        <router-link :to="{name:'AddIntentPage'}" class="btn btn-primary">Add New Intent</router-link>
         <table class="table">
           <thead>
             <tr>

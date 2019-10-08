@@ -2,8 +2,8 @@
   <div class="main-menu-wrapper">
     <div class="row">
       <div class="col-sm-12">
-        <h3>Add Intent</h3>
-        <intent-form action="create" v-on:submit-intent="handleSubmitIntent"></intent-form>
+        <h3>Edit Intent</h3>
+        <intent-form action="edit" :intentToEdit="$route.params.name" v-on:submit-intent="handleSubmitIntent"></intent-form>
       </div>
   </div>
   </div>
@@ -16,16 +16,16 @@ import IntentForm from '../components/IntentForm.vue'
 export default Vue.extend({
   data () {
     return {
-      intents: []
+      intentToEdit: {}
     }
   },
   components: {
     IntentForm
   },
-  name: 'AddIntentPage',
+  name: 'EditIntentPage',
   methods: {
-     getIntents: async function () {
-      const result = await DataService.getResource({resource: 'intents'})
+    getIntent: async function () {
+      const result = await DataService.getResource({resource: 'intents', name: this.$route.params.name})
       return result
     },
     handleSubmitIntent($event: any){
@@ -33,8 +33,8 @@ export default Vue.extend({
     }
   },
   created: async function () {
-    const intents = await this.getIntents()
-    this.intents = intents
+    const intent = await this.getIntent()
+    this.intentToEdit = intent
   }
 })
 </script>

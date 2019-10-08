@@ -4,6 +4,7 @@ import MainMenu from '../pages/MainMenu.vue'
 import IntentsPage from '../pages/IntentsPage.vue'
 import IntentDetailsPage from '../pages/IntentDetailsPage.vue'
 import AddIntentPage from '../pages/AddIntentPage.vue'
+import EditIntentPage from '../pages/EditIntentPage.vue'
 import BotsPage from '../pages/BotsPage.vue'
 import BotDetailsPage from '../pages/BotDetailsPage.vue'
 
@@ -39,9 +40,14 @@ export default new Router({
       component: IntentDetailsPage
     },
     {
-      path: '/intents/add',
+      path: '/add-intent',
       name: 'AddIntentPage',
       component: AddIntentPage
+    },
+    {
+      path: '/edit-intent/:name',
+      name: 'EditIntentPage',
+      component: EditIntentPage
     },
     {
       path: '/slot-type',

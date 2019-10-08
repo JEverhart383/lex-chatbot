@@ -18,5 +18,10 @@ class Lex_Model_Intent extends Lex_Model_Base {
     return $result;
   }
 
+  public function putIntent($intent) {
+    $decodedIntent = json_decode($intent, TRUE);
+    $result = $this->LEX_MODEL_CLIENT->putIntent($decodedIntent);
+    return $result;
+  }
 
 }
