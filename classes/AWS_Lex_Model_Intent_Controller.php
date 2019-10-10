@@ -33,7 +33,7 @@ class AWS_Lex_Model_Intent_Controller {
     register_rest_route($this->namespace, '/' . $this->resource, array(
       'methods' => 'PUT',
       // 'permission_callback' => array($this, 'check_is_admin'),
-      'callback' => array($this, 'put_item')
+      'callback' => array($this, 'update_item')
     ));
 
   }
@@ -57,7 +57,7 @@ class AWS_Lex_Model_Intent_Controller {
     }
   }
 
-  public function put_item (WP_REST_Request $request) {
+  public function update_item (WP_REST_Request $request) {
     try {
       $intentToPut = $request->get_body();
       $intent = $this->LEX_MODEL->putIntent($intentToPut);
