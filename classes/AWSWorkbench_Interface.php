@@ -22,10 +22,11 @@ class AWSWorkbench_Interface {
     $lex_menu->init();
 
     // The main interface class will always bootstrap the js and css resources
-    add_action('admin_enqueue_scripts', array($this, 'bootstrap_javascript_app') );
+    add_action('admin_enqueue_scripts', array($this, 'bootstrap_admin_app') );
+    add_action('init', array($this, 'bootstrap_frontend_app') );
   }
 
-  public function bootstrap_javascript_app ($hook) {
+  public function bootstrap_admin_app ($hook) {
     $hooks = array(
       'toplevel_page_aws-workbench',
     );
@@ -36,6 +37,10 @@ class AWSWorkbench_Interface {
       wp_enqueue_script('aws-workbench', plugins_url('/dist/main.js', dirname(__FILE__) ), array(), false, true );
       wp_localize_script('aws-workbench', 'AWS_WORKBENCH', array('rest_nonce'=> wp_create_nonce('wp_rest')));
     }
+  }
+
+  public function bootstrap_frontend_app ($hook) {
+      wp_enqueue_script('chatbot-ui', plugins_url('/dist/frontend.js', dirname(__FILE__) ), array(), false, true );
   }
 
 

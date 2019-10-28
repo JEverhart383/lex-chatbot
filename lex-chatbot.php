@@ -24,6 +24,7 @@ require_once dirname(__FILE__) . '/classes/AwsClientClasses/Lex/Lex_Model_Intent
 require_once dirname(__FILE__) . '/classes/AwsClientClasses/Lex/Lex_Model_Slot_Type.php';
 require_once dirname(__FILE__) . '/classes/AwsClientClasses/SES/SES_Email.php';
 require_once dirname(__FILE__) . '/classes/AwsClientClasses/SES/SES_Identities.php';
+require_once dirname(__FILE__) . '/classes/Interface/Interface_Chat_Dialog.php';
 
 // Initialize main class which registers clients for other services
 $AWSWorkbench_Main = new AWSWorkbench_Main();
@@ -56,6 +57,9 @@ $AWS_LEX_MODEL_INTENTS->init();
 $LEX_MODEL_SLOT_TYPES = new Lex_Model_Slot_Type($AWSWorkbench_Main->AWS_LEX_MODEL);
 $AWS_LEX_MODEL_SLOT_TYPES = new AWS_Lex_Model_Slot_Type_Controller($LEX_MODEL_SLOT_TYPES);
 $AWS_LEX_MODEL_SLOT_TYPES->init();
+
+$Interface_Chat_Dialog = new Interface_Chat_Dialog();
+$Interface_Chat_Dialog->init();
 
 if (! function_exists('wp_mail')){
   function wp_mail( $to, $subject, $message, $headers = '', $attachments = array() ) {

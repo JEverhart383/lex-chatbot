@@ -2,11 +2,19 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
-  entry: './src/main.ts',
+  entry: {
+    main: './src/main.ts',
+    frontend: './src/chatbot-ui.ts'
+  },
   output: {
-    filename: 'main.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
   },
+  // entry: './src/main.ts',
+  // output: {
+  //   filename: 'main.js',
+  //   path: path.resolve(__dirname, 'dist')
+  // },
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {

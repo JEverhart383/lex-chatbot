@@ -67,12 +67,4 @@ class AWS_Lex_Model_Intent_Controller {
     }
   }
 
-
-  // public function check_is_admin ($request) {
-  //   if (! current_user_can('activate_plugins')) {
-  //     return new WP_Error('rest_forbidden', esc_html__('You cannot view this resources'));
-  //   }
-  //   return true;
-  // }
-
 }
