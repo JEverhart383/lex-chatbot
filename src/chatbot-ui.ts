@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import ChatDialog from './ChatDialog.vue'
+import ChatDialog from './components/ChatDialog.vue'
 
 
 Vue.config.devtools = true;
