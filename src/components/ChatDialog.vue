@@ -54,7 +54,8 @@ export default Vue.extend({
    data () {
           return {
               botSettings: {
-                name: 'Online@VCU',
+                name: 'OnlineVCU',
+                alias: '$LATEST',
                 buttonText: 'Open Chat Here',
                 autoQuestions: [],
                 welcomeMessage: '',
@@ -67,7 +68,7 @@ export default Vue.extend({
               isVisible: false,
               timestamp: null,
               userID: null,
-              url: 'https://fqtjet7xb6.execute-api.us-east-1.amazonaws.com/default/lexBotIntegration',
+              url: '/wp-json/aws-workbench/v1/lex/messages',
               autoQuestions: {
                   'blackboard': 'I am having trouble with blackboard',
                   'tuitionAndFees': 'I need information about tuition and fees'
@@ -106,11 +107,10 @@ export default Vue.extend({
           postChatMessage: function (newChat) {
               this.displayResponse(newChat,'you')
                let body = {
-                  "body-json": {
-                      "timestamp": this.timestamp,
-                      "body": newChat,
-                      "userID": this.userID
-                  }
+                  botName: this.botSettings.name,
+                  botAlias: this.botSettings.alias,
+                  userId: this.userID,
+                  inputText: newChat
                 }
                fetch(this.url, {
                   method: 'POST',
@@ -120,7 +120,7 @@ export default Vue.extend({
                   })
                 }).then(res => res.json())
                 .catch(error => console.error('Error:', error))
-                .then(response => console.log('Success:', this.displayResponse(response, 'bot') ))
+                .then(response => console.log('Success:', this.displayResponse(response.message, 'bot') ))
 
               this.clearChatInput()
           },

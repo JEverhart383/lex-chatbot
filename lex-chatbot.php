@@ -18,8 +18,10 @@ require_once dirname(__FILE__) . '/controllers/AWS_SES_Identities_Controller.php
 require_once dirname(__FILE__) . '/controllers/AWS_Lex_Model_Bot_Controller.php';
 require_once dirname(__FILE__) . '/controllers/AWS_Lex_Model_Intent_Controller.php';
 require_once dirname(__FILE__) . '/controllers/AWS_Lex_Model_Slot_Type_Controller.php';
+require_once dirname(__FILE__) . '/controllers/WP_Lex_Chatbot_Lex_Runtime_Controller.php';
 
 require_once dirname(__FILE__) . '/services/Lex/Lex_Model_Bot.php';
+require_once dirname(__FILE__) . '/services/Lex/Lex_Runtime_Service.php';
 require_once dirname(__FILE__) . '/services/Lex/Lex_Model_Intent.php';
 require_once dirname(__FILE__) . '/services/Lex/Lex_Model_Slot_Type.php';
 require_once dirname(__FILE__) . '/services/SES/SES_Email.php';
@@ -57,6 +59,10 @@ $AWS_LEX_MODEL_INTENTS->init();
 $LEX_MODEL_SLOT_TYPES = new Lex_Model_Slot_Type($AWSWorkbench_Main->AWS_LEX_MODEL);
 $AWS_LEX_MODEL_SLOT_TYPES = new AWS_Lex_Model_Slot_Type_Controller($LEX_MODEL_SLOT_TYPES);
 $AWS_LEX_MODEL_SLOT_TYPES->init();
+
+$Lex_Runtime_Service = new Lex_Runtime_Service($AWSWorkbench_Main->AWS_LEX_RUNTIME);
+$WP_Lex_Chatbot_Lex_Runtime_Controller = new WP_Lex_Chatbot_Lex_Runtime_Controller($Lex_Runtime_Service);
+$WP_Lex_Chatbot_Lex_Runtime_Controller->init();
 
 $Interface_Chat_Dialog = new Interface_Chat_Dialog();
 $Interface_Chat_Dialog->init();
