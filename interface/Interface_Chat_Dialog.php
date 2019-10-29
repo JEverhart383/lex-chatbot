@@ -11,7 +11,7 @@ class Interface_Chat_Dialog {
   public function add_chatbot_dialog_html (){
     if (0 == wp_get_current_user()->ID){
         echo '
-        <div id="vcu-online-virtual-assistant">
+        <div id="wp-lex-chatbot">
         </div>
     ';
     }

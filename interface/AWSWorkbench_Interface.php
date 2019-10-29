@@ -4,8 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-require_once dirname(__FILE__) . '/interface/AWSWorkbench_Interface_Base.php';
-require_once dirname(__FILE__) . '/interface/AWSWorkbench_Interface_MainMenu.php';
+require_once dirname(__FILE__) . '/AWSWorkbench_Interface_Builder_Base.php';
+require_once dirname(__FILE__) . '/AWSWorkbench_Interface_Builder_MainMenu.php';
 
 class AWSWorkbench_Interface {
 

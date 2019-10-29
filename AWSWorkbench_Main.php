@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
-require_once dirname(__FILE__) . '/AWSWorkbench_Interface.php';
+require_once dirname(__FILE__) . '/interface/AWSWorkbench_Interface.php';
 
 class AWSWorkbench_Main {
   public $API_KEY;

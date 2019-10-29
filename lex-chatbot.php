@@ -10,21 +10,21 @@
 
 define('AWS_WORKBENCH_DIR', dirname(__FILE__) );
 
-require_once dirname(__FILE__) . '/classes/AWSWorkbench_Main.php';
-require_once dirname(__FILE__) . '/classes/AWS_Workbench_Base_Controller.php';
-require_once dirname(__FILE__) . '/classes/AWS_S3_Buckets_Controller.php';
-require_once dirname(__FILE__) . '/classes/AWS_SES_Email_Controller.php';
-require_once dirname(__FILE__) . '/classes/AWS_SES_Identities_Controller.php';
-require_once dirname(__FILE__) . '/classes/AWS_Lex_Model_Bot_Controller.php';
-require_once dirname(__FILE__) . '/classes/AWS_Lex_Model_Intent_Controller.php';
-require_once dirname(__FILE__) . '/classes/AWS_Lex_Model_Slot_Type_Controller.php';
+require_once dirname(__FILE__) . '/AWSWorkbench_Main.php';
+require_once dirname(__FILE__) . '/controllers/AWS_Workbench_Base_Controller.php';
+require_once dirname(__FILE__) . '/controllers/AWS_S3_Buckets_Controller.php';
+require_once dirname(__FILE__) . '/controllers/AWS_SES_Email_Controller.php';
+require_once dirname(__FILE__) . '/controllers/AWS_SES_Identities_Controller.php';
+require_once dirname(__FILE__) . '/controllers/AWS_Lex_Model_Bot_Controller.php';
+require_once dirname(__FILE__) . '/controllers/AWS_Lex_Model_Intent_Controller.php';
+require_once dirname(__FILE__) . '/controllers/AWS_Lex_Model_Slot_Type_Controller.php';
 
-require_once dirname(__FILE__) . '/classes/AwsClientClasses/Lex/Lex_Model_Bot.php';
-require_once dirname(__FILE__) . '/classes/AwsClientClasses/Lex/Lex_Model_Intent.php';
-require_once dirname(__FILE__) . '/classes/AwsClientClasses/Lex/Lex_Model_Slot_Type.php';
-require_once dirname(__FILE__) . '/classes/AwsClientClasses/SES/SES_Email.php';
-require_once dirname(__FILE__) . '/classes/AwsClientClasses/SES/SES_Identities.php';
-require_once dirname(__FILE__) . '/classes/Interface/Interface_Chat_Dialog.php';
+require_once dirname(__FILE__) . '/services/Lex/Lex_Model_Bot.php';
+require_once dirname(__FILE__) . '/services/Lex/Lex_Model_Intent.php';
+require_once dirname(__FILE__) . '/services/Lex/Lex_Model_Slot_Type.php';
+require_once dirname(__FILE__) . '/services/SES/SES_Email.php';
+require_once dirname(__FILE__) . '/services/SES/SES_Identities.php';
+require_once dirname(__FILE__) . '/interface/Interface_Chat_Dialog.php';
 
 // Initialize main class which registers clients for other services
 $AWSWorkbench_Main = new AWSWorkbench_Main();

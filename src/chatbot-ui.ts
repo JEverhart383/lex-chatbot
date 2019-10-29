@@ -5,7 +5,7 @@ import ChatDialog from './components/ChatDialog.vue'
 Vue.config.devtools = true;
 
 new Vue({
-  el: '#vcu-online-virtual-assistant',
+  el: '#wp-lex-chatbot',
   data: {
   },
   components: { ChatDialog },
