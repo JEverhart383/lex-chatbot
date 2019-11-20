@@ -36,6 +36,7 @@
                                 <a href="#" v-on:click="autoSubmitQuestion('tuitionAndFees')">Tuition and Fees</a>
                         </span>
                 </div>
+                <chat-message v-for="message in messages" :key="message.content" :botName="botSettings.name" :message="message"></chat-message>
         </div>
         <div class="wp-lex-chatbot-chat-input">
             <div class="wp-lex-chatbot-input-container">
@@ -49,8 +50,12 @@
 </template>
 <script>
 import Vue from "vue"
+import ChatMessage  from './ChatMessage.vue'
 export default Vue.extend({
   name: 'ChatDialog',
+  components: {
+    ChatMessage
+  },
    data () {
           return {
               botSettings: {

@@ -5,6 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require_once dirname(__FILE__) . '/interface/AWSWorkbench_Interface.php';
+require_once dirname(__FILE__) . '/services/WP_Lex_Chatbot_Data_Service.php';
 
 class AWSWorkbench_Main {
   public $API_KEY;
@@ -22,7 +23,7 @@ class AWSWorkbench_Main {
 
   }
 
-  public function init () {
+  public function init ($file) {
     $AWS_INTERFACE = new AWSWorkbench_Interface();
     $AWS_INTERFACE->init();
 
@@ -31,6 +32,7 @@ class AWSWorkbench_Main {
     $this->test_sdk_configuration();
     $this->register_lex_model_client();
     $this->register_lex_runtime_client();
+    $this->initialize_database_tables($file);
   }
 
   public static function return_credentials () {
@@ -61,18 +63,9 @@ class AWSWorkbench_Main {
     }
   }
 
-  private function initialize_database_tables () {
-    global $wpdb;
-    $conversation_table = $wpdb->prefix . 'lexbot_conversations';
-    $charset_collate = $wpdb->get_charset_collate();
-    $sql = "CREATE TABLE $conversation_table (
-          id mediumint(9) NOT NULL AUTO_INCREMENT,
-          conversation_id bigint NOT NULL,
-          speaker VARCHAR NOT NULL,
-          utterance VARCHAR NOT NULL,
-          intent,
-
-    ) $charset_collate;";
+  private function initialize_database_tables ($file) {
+    $Data_Service = new WP_Lex_Chatbot_Data_Service();
+    $Data_Service->register_database_tables($file);
   }
 
   private function test_sdk_configuration () {

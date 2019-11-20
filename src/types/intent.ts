@@ -11,6 +11,7 @@ export interface Intent {
   sampleUtterances?: string[];
   rejectionStatement?: Statement;
   followUpPrompt?: FollowUpPrompt;
+  fulfillmentActivity?: FulfillmentActivity;
   '@metadata'?: any;
 
 }
@@ -18,4 +19,8 @@ export interface Intent {
 export interface FollowUpPrompt {
   prompt: Prompt;
   rejectionStatement: Statement;
+}
+
+export interface FulfillmentActivity {
+  type: string;
 }

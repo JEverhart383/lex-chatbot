@@ -12,7 +12,7 @@
 <script lang="ts">
 import Vue from "vue"
 import { DataService } from '../utilities/data-service'
-import IntentForm from '../components/IntentForm.vue'
+import IntentForm from '../components/forms/IntentForm.vue'
 export default Vue.extend({
   data () {
     return {

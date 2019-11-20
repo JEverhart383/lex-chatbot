@@ -1,8 +1,8 @@
 <?php
-/* Plugin Name: Lex Chatbot
+/* Plugin Name: WP Lex Chatbot
  * Author: Jeff Everhart
- *
- *
+ * Description: A plugin that allows WordPress users to create and deploy site-based chatbots using the Amazon Lex bot building platform
+ * Version: 0.0.1
  *
  *
  *
@@ -30,7 +30,7 @@ require_once dirname(__FILE__) . '/interface/Interface_Chat_Dialog.php';
 
 // Initialize main class which registers clients for other services
 $AWSWorkbench_Main = new AWSWorkbench_Main();
-$AWSWorkbench_Main->init();
+$AWSWorkbench_Main->init(__FILE__);
 
 // Bootstrap routes and handlers for S3 services
 $AWS_S3 = new AWS_S3_Buckets_Controller($AWSWorkbench_Main->AWS_S3);
