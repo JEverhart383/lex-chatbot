@@ -2,7 +2,16 @@
   <div class="main-menu-wrapper">
     <div class="row">
       <div class="col-sm-12">
-        <h3>Bots</h3>
+        <h3>{{bot.name}} <span class="badge badge-pill" :class="bot.status === 'NOT_BUILT' ? 'badge-danger' : 'badge-success' ">{{bot.status}}</span></h3>
+        <div>
+          {{bot.intents}}
+        </div>
+        <div>
+          {{bot.clarificationPrompt}}
+        </div>
+        <div>
+          {{bot.abortStatement}}
+        </div>
         <div>
           {{bot}}
         </div>

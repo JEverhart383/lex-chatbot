@@ -14,6 +14,7 @@ class WP_Lex_Chatbot_Data_Service {
           speaker VARCHAR(255) NOT NULL,
           utterance VARCHAR(255) NOT NULL,
           intent VARCHAR(255),
+          page VARCHAR(255),
           PRIMARY KEY(id)
 
     )". $wpdb->get_charset_collate().";";
@@ -22,7 +23,7 @@ class WP_Lex_Chatbot_Data_Service {
     dbDelta($sql);
   }
 
-  public static function add_message_to_database ($message) {
+  public static function add_message_to_database ($conversation_id, $speaker, $utterance, $intent) {
     global $wpdb;
     // Replace with WPDB prepare: https://developer.wordpress.org/reference/classes/wpdb/prepare/
     $table_name = $wpdb->prefix . self::$conversation_table;

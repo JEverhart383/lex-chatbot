@@ -66,7 +66,6 @@ class AWSWorkbench_Main {
   private function initialize_database_tables ($file) {
     error_log('Main initialize_database_tables getting called');
     register_activation_hook($file, array('WP_Lex_Chatbot_Data_Service', 'initialize_plugin_tables'));
-    WP_Lex_Chatbot_Data_Service::add_message_to_database('string');
   }
 
   private function test_sdk_configuration () {

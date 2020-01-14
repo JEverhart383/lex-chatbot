@@ -7,7 +7,8 @@ import AddIntentPage from '../pages/AddIntentPage.vue'
 import EditIntentPage from '../pages/EditIntentPage.vue'
 import BotsPage from '../pages/BotsPage.vue'
 import BotDetailsPage from '../pages/BotDetailsPage.vue'
-
+import BotStylesPage from '../pages/BotStylesPage.vue'
+import EmailSettingsPage from '../pages/EmailSettingsPage.vue'
 
 
 Vue.use(Router)
@@ -53,6 +54,16 @@ export default new Router({
       path: '/slot-type',
       name: 'MainMenu',
       component: MainMenu
+    },
+    {
+      path: '/bot-styles',
+      name: 'BotStylesPage',
+      component: BotStylesPage
+    },
+    {
+      path: '/email-settings',
+      name: 'EmailSettingsPage',
+      component: EmailSettingsPage
     },
 
   ]

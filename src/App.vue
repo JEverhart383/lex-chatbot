@@ -16,10 +16,10 @@
           <router-link class="navbar-brand" to="/slot-types">
             Slot Types
           </router-link>
-          <router-link class="navbar-brand" to="/slot-types">
+          <router-link class="navbar-brand" to="/email-settings">
             Email Settings
           </router-link>
-          <router-link class="navbar-brand" to="/slot-types">
+          <router-link class="navbar-brand" to="/bot-styles">
             Bot Styles
           </router-link>
         </nav>
