@@ -28,7 +28,7 @@ class AWSWorkbench_Interface_Base {
         'manage_options',
         $this->MENU_PAGE_SLUG . $this->HASH,
         array($this, 'render_admin_menu_page'),
-        'dashicons-grid-view',
+        'dashicons-format-status',
         6
       );
     } else {

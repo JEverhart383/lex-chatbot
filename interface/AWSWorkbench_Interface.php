@@ -15,11 +15,9 @@ class AWSWorkbench_Interface {
 
   public function init () {
 
-    $main_menu = new AWSWorkbench_Interface_MainMenu('AWS Workbench', 'aws-workbench', 'top-level', '');
+    $main_menu = new AWSWorkbench_Interface_MainMenu('WP Lex Chatbot', 'wp-lex-chatbot', 'top-level', '');
     $main_menu->init();
 
-    $lex_menu = new AWSWorkbench_Interface_Base('Lex - Chatbot', 'aws-workbench', 'sub-menu', '#/lex');
-    $lex_menu->init();
 
     // The main interface class will always bootstrap the js and css resources
     add_action('admin_enqueue_scripts', array($this, 'bootstrap_admin_app') );
@@ -28,7 +26,7 @@ class AWSWorkbench_Interface {
 
   public function bootstrap_admin_app ($hook) {
     $hooks = array(
-      'toplevel_page_aws-workbench',
+      'toplevel_page_wp-lex-chatbot',
     );
     if (in_array($hook, $hooks)){
       wp_enqueue_style('bootstrap-css', plugins_url('/css/bootstrap.min.css', dirname(__FILE__) ), array());
@@ -40,7 +38,9 @@ class AWSWorkbench_Interface {
   }
 
   public function bootstrap_frontend_app ($hook) {
+    if (wp_get_current_user() === 0) {
       wp_enqueue_script('chatbot-ui', plugins_url('/dist/frontend.js', dirname(__FILE__) ), array(), false, true );
+    }
   }
 
 

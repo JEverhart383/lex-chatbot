@@ -4,16 +4,24 @@
       <div class="col-sm-12">
         <h3>{{bot.name}} <span class="badge badge-pill" :class="bot.status === 'NOT_BUILT' ? 'badge-danger' : 'badge-success' ">{{bot.status}}</span></h3>
         <div>
-          {{bot.intents}}
+          <h4>Everything Else</h4>
+          <!-- {{bot}} -->
         </div>
         <div>
+          <h4>Intents</h4>
+            <ul class="list-group">
+              <li class="list-group-item" v-for="intent in bot.intents" :key="intent.intentName">
+                {{intent.intentName}} | {{intent.intentVersion}}
+              </li>
+            </ul>
+        </div>
+        <div>
+          <h4>Clarification Prompt</h4>
           {{bot.clarificationPrompt}}
         </div>
         <div>
+          <h4>Abort Statement</h4>
           {{bot.abortStatement}}
-        </div>
-        <div>
-          {{bot}}
         </div>
       </div>
   </div>
